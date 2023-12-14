@@ -24,7 +24,7 @@ In addition, this project will include:
 
 ## Implementation Timeline  
 - Thursday & Friday: Setup the project by getting webpack operational. Ensuring the canvas window and balloons appears on the screen, and familiarize myself with the Canvas API
-- Weekend: Implementing the game rules to Bubble Popper and adding player controls
+- Weekend: Implementing the game rules to Balloon Popper and adding player controls
 - Monday: Implementing color schemes through CSS
 
 
