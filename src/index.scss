@@ -1,5 +1,13 @@
-@import "./styles/example.scss";
+@import './styles/reset.scss';
 
-#main {
-  color: $color;
+#gameScreen {
+  border: 5px solid black;
+  margin: auto;
+  width: "500";
+  height: "500";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }

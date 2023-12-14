@@ -1,2 +1,2 @@
-!function(){"use strict";var e;e=class{constructor(e){this.ele=e,this.ele.innerHTML="<h1>it's Alive!!!!<h1>",this.handleClick=this.handleClick.bind(this),this.ele.addEventListener("click",this.handleClick)}handleClick(){this.ele.children[0].innerText="Ouch!"}},document.addEventListener("DOMContentLoaded",(()=>{const n=document.getElementById("main");new e(n),console.log("hello world")}))}();
+document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("gameScreen");console.log(e);const t=e.getContext("2d");console.log(t),t.fillStyle="red"}));
 //# sourceMappingURL=main.js.map
