@@ -2,7 +2,6 @@ class Balloon {
   constructor() {
     this.x = Math.floor(25 + Math.random()*(975 - 25 + 1));
     this.y = 630;
-    this.vel = 1;
     this.radius = 25;
     this.startAngle = 0;
     this.endAngle = 2 * Math.PI;
@@ -19,8 +18,6 @@ class Balloon {
     ctx.fillText(this.letter, 20, 20); 
     ctx.stroke();
     ctx.closePath();
-
-
   }
 
   randomLetter() {
@@ -30,19 +27,13 @@ class Balloon {
   }
 
   randomColor() {
-    // const letters = '0123456789ABCDEF';
-    // let color = '#';
-    // for (let i = 0; i < 6; i++) {
-    //   color += letters[Math.floor(Math.random() * 16)];
-    // }
-    // return color;
     const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
     let index = Math.floor(Math.random() * 7);
     return colors[index];
 
   }
 
-  animate(ctx) {
+  fly(ctx) {
     let that = this;
     if (this.y === 25) {
       this.clearCircle(ctx, this.x, this.y, this.radius);
@@ -50,12 +41,10 @@ class Balloon {
 
     if (this.y > 25) { 
       ctx.clearRect(0, 0, 1000, 600);
-      requestAnimationFrame(() => this.animate(ctx));
-      // requestAnimationFrame(this.animate.bind(this));
+      requestAnimationFrame(() => this.fly(ctx));
+      // requestAnimationFrame(this.fly.bind(this));
       // let dx = Math.floor(Math.random() * (1 - -1) + -1);
       // this.x += dx;
-
-      
       this.y -= 1;
       // console.log(this.y);
       this.draw(ctx);
@@ -63,14 +52,14 @@ class Balloon {
     
   }
 
-  clearCircle(context,x,y,radius) {
-    // context.save();
-    context.beginPath();
-    context.arc(this.x, this.y, this.radius, 0, 2*Math.PI, true);
-    context.clip();
-    context.clearRect(this.x-radius,this.y-radius,this.radius*2,this.radius*2);
-    // context.restore();
-  }
+  // clearCircle(context,x,y,radius) {
+  //   // context.save();
+  //   context.beginPath();
+  //   context.arc(this.x, this.y, this.radius, 0, 2*Math.PI, true);
+  //   context.clip();
+  //   context.clearRect(this.x-radius,this.y-radius,this.radius*2,this.radius*2);
+  //   // context.restore();
+  // }
 
   // pop(ctx) {
   //   if (this.y === 25) {
