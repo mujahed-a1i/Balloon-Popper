@@ -18,20 +18,27 @@ class Canvas {
   }
 
   animate(ctx = this.ctx){
+    ctx.clearRect(0, 0, 1000, 600);
+    requestAnimationFrame(() => this.animate());
     this.balloons.forEach((balloon) => {
       if (balloon.y > 25) { 
-        ctx.clearRect(0, 0, 1000, 600);
-        requestAnimationFrame(() => balloon.fly(ctx));
-
         balloon.y -= 1;
         // console.log(balloon.y);
         balloon.draw(ctx);
       }
+
     });
+    
   }
+
+  interval(){
+    this.addBalloon();
+    return setInterval(() => this.addBalloon(), 5000);
+  }
+}
 
 
   
-}
+
 
 export default Canvas;

@@ -9,15 +9,12 @@ document.addEventListener('DOMContentLoaded', () =>  {
   // screenCtx.fillStyle = "blue";
   // screenCtx.fillRect(10, 10, 100, 100)
   const gameScreen = new Canvas(1000, 600);
-  gameScreen.addBalloon();
+  gameScreen.interval();
   gameScreen.animate();
 
   // let b2 = new Balloon();   
   // b2.draw(screenCtx);  
   // b2.fly(screenCtx);
-  
-  console.log(screen);
-  console.log(b2.letter);
   // window.b2 = b2;
   // console.log(screenCtx)
   
