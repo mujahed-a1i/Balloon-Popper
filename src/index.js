@@ -7,14 +7,16 @@ document.addEventListener('DOMContentLoaded', () =>  {
   const screenCtx = screen.getContext("2d");
   // screenCtx.fillStyle = "blue";
   // screenCtx.fillRect(10, 10, 100, 100)
+
   let b2 = new Balloon();   
   b2.draw(screenCtx);  
-
+  b2.animate(screenCtx);
   
   console.log(screen);
   console.log(b2.letter);
-  window.b2 = b2;
+  // window.b2 = b2;
   // console.log(screenCtx)
+  
   
 
 });

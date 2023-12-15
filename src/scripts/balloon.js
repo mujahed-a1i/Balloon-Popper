@@ -1,6 +1,7 @@
 class Balloon {
   constructor() {
-    this.pos = [100, 75];
+    this.x = Math.floor(25 + Math.random()*(975 - 25 + 1));
+    this.y = 630;
     this.vel = 1;
     this.radius = 25;
     this.startAngle = 0;
@@ -12,12 +13,14 @@ class Balloon {
   draw(ctx) {
     ctx.fillStyle = this.color;
     ctx.beginPath();
-    ctx.arc(this.pos[0], this.pos[1], this.radius, 0, this.endAngle, true);
+    ctx.arc(this.x, this.y, this.radius, 0, this.endAngle, true);
     ctx.fill();
+    ctx.font = "5px serif";
+    ctx.fillText(this.letter, 20, 20); 
     ctx.stroke();
     ctx.closePath();
 
-    let balloonCTX = this.getContext('2d')
+
   }
 
   randomLetter() {
@@ -38,6 +41,44 @@ class Balloon {
     return colors[index];
 
   }
+
+  animate(ctx) {
+    let that = this;
+    if (this.y === 25) {
+      this.clearCircle(ctx, this.x, this.y, this.radius);
+    }
+
+    if (this.y > 25) { 
+      ctx.clearRect(0, 0, 1000, 600);
+      requestAnimationFrame(() => this.animate(ctx));
+      // requestAnimationFrame(this.animate.bind(this));
+      // let dx = Math.floor(Math.random() * (1 - -1) + -1);
+      // this.x += dx;
+
+      
+      this.y -= 1;
+      // console.log(this.y);
+      this.draw(ctx);
+    }
+    
+  }
+
+  clearCircle(context,x,y,radius) {
+    // context.save();
+    context.beginPath();
+    context.arc(this.x, this.y, this.radius, 0, 2*Math.PI, true);
+    context.clip();
+    context.clearRect(this.x-radius,this.y-radius,this.radius*2,this.radius*2);
+    // context.restore();
+  }
+
+  // pop(ctx) {
+  //   if (this.y === 25) {
+
+  //   }
+  // }
+
+
 
   
 }
