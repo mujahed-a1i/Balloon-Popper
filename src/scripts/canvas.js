@@ -33,7 +33,7 @@ class Canvas {
 
   interval(){
     this.addBalloon();
-    return setInterval(() => this.addBalloon(), 5000);
+    return setInterval(() => this.addBalloon(), 2000);
   }
 }
 
