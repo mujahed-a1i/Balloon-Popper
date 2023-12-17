@@ -1,7 +1,16 @@
 @import './styles/reset.scss';
 
+body {
+  background: url("../assets/blueStripe.jpg");
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
 #gameScreen {
-  border: 5px solid rgba(18, 164, 186, 0.857);
+  background-color: white;
+  border: 5px solid rgba(165, 0, 0, 0.857);
   margin: auto;
   // width: 1000px;
   // height: 600px;
