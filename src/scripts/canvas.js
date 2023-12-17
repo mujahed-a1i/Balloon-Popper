@@ -7,7 +7,7 @@ class Canvas {
     this.ctx = this.element.getContext('2d');
     this.element.width = width;
     this.element.height = height;
-    this.balloons = [];
+    this.balloons = [new Balloon()];
   }
 
   addBalloon() {
@@ -22,11 +22,12 @@ class Canvas {
     requestAnimationFrame(() => this.animate());
     this.balloons.forEach((balloon) => {
       if (balloon.y > 25) { 
-        balloon.y -= 1;
-        // console.log(balloon.y);
-        balloon.draw(ctx);
+        // balloon.y -= 1;
+        // if (balloon.x > 25 && balloon.x < 975)
+          balloon.move();
+          balloon.draw(ctx);
+        console.log(balloon.validPos());
       }
-
     });
     
   }
