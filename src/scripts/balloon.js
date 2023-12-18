@@ -3,14 +3,29 @@ class Balloon {
   constructor() {
     
     this.element = document.getElementById('gameScreen');
+    // this.element.id = 'gameScreen';
+    // document.body.appendChild(this.element); 
     this.ctx = this.element.getContext('2d');
-    this.images = [ "./assets/balloons/pink.png" ];
+    this.images = [
+      "./assets/balloons/pink.png", 
+      "./assets/balloons/blue.png", 
+      "./assets/balloons/green.png", 
+      "./assets/balloons/red.png", 
+      "./assets/balloons/purple.png",
+      "./assets/balloons/yellow.png",
+      "./assets/balloons/babyBlue.png",
+      "./assets/balloons/darkGreen.png",
+      "./assets/balloons/darkRed.png",
+      "./assets/balloons/babyPink.png"
+    ];
     this.image = new Image();
     this.image.src = this.images[Math.floor(Math.random() * this.images.length)];
     this.image.onload = this.draw.bind(this);
+    this.width = this.image.width;
+    this.height = this.image.height;
     this.directions = [this.floatLeft, this.floatRight, this.floatUp];
-    this.radius = this.image.width/2;
-    this.x = Math.floor(this.radius + Math.random()*(975 - this.radius + 1));
+    this.radius = this.image.width / 2;
+    this.x = Math.floor(this.width + Math.random()*(1000 - this.width + 1));
     this.y = 627;
     this.dx = 1;
     this.dy = .6;
@@ -41,7 +56,7 @@ class Balloon {
     this.ctx.font = '25px Arial'; // Set the font style
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
-    this.ctx.fillText(this.letter, this.x + 20, this.y + 25);
+    this.ctx.fillText(this.letter, this.x + 27, this.y + 30);
   }
 
   randomLetter() { // Generates random balloon letters
@@ -76,7 +91,7 @@ class Balloon {
   
   // }
   validPos() { // checks to see if Balloon is within the canvas
-    if ((this.x > this.radius && this.x < 1000 - this.radius) && (this.y > this.radius)) {
+    if ((this.x > this.width && this.x < 1000 - this.width) && (this.y > 0)) {
       return true;
     } 
     return false;

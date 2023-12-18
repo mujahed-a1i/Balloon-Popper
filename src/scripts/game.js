@@ -18,22 +18,23 @@ class Game {
     this.animate();
   }
 
-  animate(ctx = this.canvas.ctx){
+  animate(){
     this.increaseBalloonSpeed();
-    ctx.clearRect(0, 0, 1000, 600);
+    this.canvas.ctx.clearRect(0, 0, 1000, 600);
     requestAnimationFrame(() => this.animate());
     this.canvas.balloons.forEach((balloon, index) => {
-      if (balloon.y <= balloon.radius - 5) {
+      if (balloon.y <= 0) {
         this.missed++;
+        this.canvas.addBalloon()
         console.log(`current life: ${this.life}`);
         this.loseLife();
         this.canvas.balloons.splice(index, 1);
         
       }
       
-      if (balloon.y > balloon.radius) { 
+      if (balloon.y > 0) { 
         balloon.move();
-        balloon.draw(ctx);
+        balloon.draw();
       }
 
 
@@ -42,25 +43,11 @@ class Game {
   }
 
   loseLife() { 
-    // Loses a life when the balloon reaches to the top of the game screen
-    // this.canvas.balloons.forEach((balloon, index) => {
-    //   if (balloon.y <= balloon.radius) {
-    //     let index = this.canvas.balloons.indexOf(balloon);
-    //     this.canvas.balloons.splice(index, 1);
-    //     this.life--;
-    //     this.canvas.addBalloon();
-    //     console.log(`current life: ${this.life}`);
-    //   }
-
-    //   if (this.life === 0) {
-    //     // emptys the array of balloons when game lives equal to 0
-    //     this.canvas.balloons = [];
-    //   }
-    // });
     this.life--;
 
     if (this.life === 0) {
       // emptys the array of balloons when game lives equal to 0
+      removeEventListener("keydown", (event) => this.pop(event));
       this.canvas.balloons = [];
       console.log(`Total Balloons: ${this.balloonCount}`);
       console.log(`Balloons Popped: ${this.popCounter}`);
@@ -74,7 +61,6 @@ class Game {
 
     
   }
-
 
   pop(event) {
     if (event.keyCode > 64 && event.keyCode < 91) {

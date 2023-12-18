@@ -1,9 +1,10 @@
 import Balloon from "./balloon";
 class Canvas {
+  
   constructor(width, height) {
     this.element = document.getElementById('gameScreen');
     // this.element.id = 'gameScreen';
-    document.body.appendChild(this.element); 
+    // document.body.appendChild(this.element); 
     this.ctx = this.element.getContext('2d');
     this.element.width = width;
     this.element.height = height;
@@ -19,15 +20,15 @@ class Canvas {
   }
 
   
-  animate(ctx = this.ctx){
-    ctx.clearRect(0, 0, this.element.width, this.element.height);
+  animate(){
+    this.canvas.ctx.clearRect(0, 0, this.element.width, this.element.height);
     requestAnimationFrame(() => this.animate());
     this.balloons.forEach((balloon) => {
       if (balloon.y > this.balloon.radius) { 
         // balloon.y -= 1;
         // if (balloon.x > 25 && balloon.x < 975)
         balloon.move();
-        balloon.draw(ctx);
+        balloon.draw();
         // console.log(balloon.validPos());
       }
     });
