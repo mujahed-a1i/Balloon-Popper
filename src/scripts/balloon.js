@@ -1,12 +1,12 @@
 class Balloon {
   
   constructor() {
+    Balloon.dy = .5;
     this.directions = [this.floatLeft, this.floatRight, this.floatUp];
     this.x = Math.floor(25 + Math.random()*(975 - 25 + 1));
     this.y = 627;
     this.dx = 1;
     this.dy = 1;
-    this.trueX = this.x * 1;
     this.radius = 25;
     this.startAngle = 0;
     this.endAngle = 2 * Math.PI;
@@ -43,24 +43,24 @@ class Balloon {
   }
 
   randomColor() { // Generates random balloon color
-    const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-    let index = Math.floor(Math.random() * 7);
+    const colors = ['red', 'orange', 'green', 'blue', 'indigo', 'violet'];
+    let index = Math.floor(Math.random() * 6);
     return colors[index];
 
   }
 
   floatRight() { // Balloon direction to NE
     this.x+= this.dx;
-    this.y-= this.dy;
+    this.y-= Balloon.dy;
   }
 
   floatLeft(){ // Balloon direction to NW
     this.x-= this.dx;
-    this.y-= this.dy;
+    this.y-= Balloon.dy;
   }
 
   floatUp(){ // Balloon direction to N
-    this.y-= this.dy;
+    this.y-= Balloon.dy;
   }
 
 
@@ -68,7 +68,7 @@ class Balloon {
   
   // }
   validPos() { // checks to see if Balloon is within the canvas
-    if ((this.x > 25 && this.x < 975) && (this.y > 25)) {
+    if ((this.x > this.radius && this.x < 975) && (this.y > this.radius)) {
       return true;
     } 
     return false;
@@ -109,9 +109,6 @@ class Balloon {
   }
 }
 
-// let b1 = new Balloon();
-// console.log(b1.letter);
-// console.log(b1.color);
 
 
 export default Balloon;

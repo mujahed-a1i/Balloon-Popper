@@ -1,27 +1,29 @@
 import Balloon from "./balloon";
 class Canvas {
+
   constructor(width, height) {
     this.element = document.createElement('canvas');
     this.element.id = 'gameScreen';
-    document.body.appendChild(this.element);
+    document.body.appendChild(this.element); 
     this.ctx = this.element.getContext('2d');
     this.element.width = width;
     this.element.height = height;
-    this.balloons = [];
+    this.balloons = [new Balloon(), new Balloon(), new Balloon(), new Balloon(), new Balloon()];
+    this.balloon = new Balloon();
   }
 
   addBalloon() {
     let balloon = new Balloon();
     this.balloons.push(balloon);
-    balloon.draw(this.ctx);
+    // balloon.draw(this.ctx);
     return balloon;
   }
 
   animate(ctx = this.ctx){
-    ctx.clearRect(0, 0, 1000, 600);
+    ctx.clearRect(0, 0, this.element.width, this.element.height);
     requestAnimationFrame(() => this.animate());
     this.balloons.forEach((balloon) => {
-      if (balloon.y > 25) { 
+      if (balloon.y > this.balloon.radius) { 
         // balloon.y -= 1;
         // if (balloon.x > 25 && balloon.x < 975)
         balloon.move();
@@ -29,13 +31,12 @@ class Canvas {
         // console.log(balloon.validPos());
       }
     });
-    
   }
 
-  interval(){
-    this.addBalloon();
-    return setInterval(() => this.addBalloon(), 2000);
-  }
+  // interval(){
+  //   this.addBalloon();
+  //   return setInterval(() => this.addBalloon(), 2000);
+  // }
 }
 
 
