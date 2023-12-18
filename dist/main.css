@@ -145,7 +145,7 @@ body {
 }
 
 #gameScreen {
-  background-color: white;
+  background-color: rgb(0, 170, 255);
   border: 5px solid rgba(165, 0, 0, 0.857);
   margin: auto;
   position: absolute;

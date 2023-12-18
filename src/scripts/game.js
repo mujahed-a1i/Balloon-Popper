@@ -23,7 +23,7 @@ class Game {
     ctx.clearRect(0, 0, 1000, 600);
     requestAnimationFrame(() => this.animate());
     this.canvas.balloons.forEach((balloon, index) => {
-      if (balloon.y <= balloon.radius) {
+      if (balloon.y <= balloon.radius - 5) {
         this.missed++;
         console.log(`current life: ${this.life}`);
         this.loseLife();

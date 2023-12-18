@@ -1,9 +1,8 @@
 import Balloon from "./balloon";
 class Canvas {
-  
   constructor(width, height) {
-    this.element = document.createElement('canvas');
-    this.element.id = 'gameScreen';
+    this.element = document.getElementById('gameScreen');
+    // this.element.id = 'gameScreen';
     document.body.appendChild(this.element); 
     this.ctx = this.element.getContext('2d');
     this.element.width = width;

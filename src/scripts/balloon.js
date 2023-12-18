@@ -1,38 +1,47 @@
 class Balloon {
   static dy = 1;
   constructor() {
+    
+    this.element = document.getElementById('gameScreen');
+    this.ctx = this.element.getContext('2d');
+    this.images = [ "./assets/balloons/pink.png" ];
+    this.image = new Image();
+    this.image.src = this.images[Math.floor(Math.random() * this.images.length)];
+    this.image.onload = this.draw.bind(this);
     this.directions = [this.floatLeft, this.floatRight, this.floatUp];
-    this.x = Math.floor(25 + Math.random()*(975 - 25 + 1));
+    this.radius = this.image.width/2;
+    this.x = Math.floor(this.radius + Math.random()*(975 - this.radius + 1));
     this.y = 627;
     this.dx = 1;
     this.dy = .6;
-    this.radius = 25;
     this.startAngle = 0;
     this.endAngle = 2 * Math.PI;
-    this.color = this.randomColor();
+    // this.color = this.randomColor();
     this.letter = this.randomLetter();
     this.moveCounter = 0;
     this.moveLimit = Math.floor(Math.random() * (140 - 40 + 1) + 40);
-    // this.direction = ['right-up', 'left-up'][Math.floor(Math.random()* 2)];
     this.direction = [this.floatLeft, this.floatRight, this.floatUp][Math.floor(Math.random()* 3)];
   }
 
-  draw(ctx) { // Draws the balloon with corresponding Letter
-    
+
+
+  draw() { // Draws the balloon with corresponding Letter
+
     // Draws the balloon
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, this.endAngle, true);
-    ctx.fill();; 
-    ctx.stroke();
-    ctx.closePath();
+    // ctx.fillStyle = this.color;
+    // ctx.beginPath();
+    // ctx.arc(this.x, this.y, this.radius, 0, this.endAngle, true);
+    // ctx.fill();; 
+    // ctx.stroke();
+    // ctx.closePath();
+    this.ctx.drawImage(this.image,this.x, this.y);
 
     // Draws the corresponding letter within the balloon
-    ctx.fillStyle = 'white'; // Set the color for the text
-    ctx.font = '25px Arial'; // Set the font style
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(this.letter, this.x, this.y);
+    this.ctx.fillStyle = 'white'; // Set the color for the text
+    this.ctx.font = '25px Arial'; // Set the font style
+    this.ctx.textAlign = 'center';
+    this.ctx.textBaseline = 'middle';
+    this.ctx.fillText(this.letter, this.x + 20, this.y + 25);
   }
 
   randomLetter() { // Generates random balloon letters
@@ -41,12 +50,12 @@ class Balloon {
     return letters[index];
   }
 
-  randomColor() { // Generates random balloon color
-    const colors = ['red', 'orange', 'green', 'blue', 'indigo', 'violet'];
-    let index = Math.floor(Math.random() * 6);
-    return colors[index];
+  // randomColor() { // Generates random balloon color
+  //   const colors = ['red', 'orange', 'green', 'blue', 'indigo', 'violet'];
+  //   let index = Math.floor(Math.random() * 6);
+  //   return colors[index];
 
-  }
+  // }
 
   floatRight() { // Balloon direction to NE
     this.x+= this.dx;
@@ -67,7 +76,7 @@ class Balloon {
   
   // }
   validPos() { // checks to see if Balloon is within the canvas
-    if ((this.x > this.radius && this.x < 975) && (this.y > this.radius)) {
+    if ((this.x > this.radius && this.x < 1000 - this.radius) && (this.y > this.radius)) {
       return true;
     } 
     return false;
