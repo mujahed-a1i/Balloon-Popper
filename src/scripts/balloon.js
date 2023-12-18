@@ -1,12 +1,11 @@
 class Balloon {
-  
+  static dy = 1;
   constructor() {
-    Balloon.dy = .5;
     this.directions = [this.floatLeft, this.floatRight, this.floatUp];
     this.x = Math.floor(25 + Math.random()*(975 - 25 + 1));
     this.y = 627;
     this.dx = 1;
-    this.dy = 1;
+    this.dy = .6;
     this.radius = 25;
     this.startAngle = 0;
     this.endAngle = 2 * Math.PI;
@@ -51,16 +50,16 @@ class Balloon {
 
   floatRight() { // Balloon direction to NE
     this.x+= this.dx;
-    this.y-= Balloon.dy;
+    this.y-= this.dy * Balloon.dy;
   }
 
   floatLeft(){ // Balloon direction to NW
     this.x-= this.dx;
-    this.y-= Balloon.dy;
+    this.y-= this.dy * Balloon.dy;
   }
 
   floatUp(){ // Balloon direction to N
-    this.y-= Balloon.dy;
+    this.y-= this.dy * Balloon.dy;
   }
 
 

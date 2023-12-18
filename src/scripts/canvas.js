@@ -1,6 +1,6 @@
 import Balloon from "./balloon";
 class Canvas {
-
+  
   constructor(width, height) {
     this.element = document.createElement('canvas');
     this.element.id = 'gameScreen';
@@ -8,7 +8,7 @@ class Canvas {
     this.ctx = this.element.getContext('2d');
     this.element.width = width;
     this.element.height = height;
-    this.balloons = [new Balloon(), new Balloon(), new Balloon(), new Balloon(), new Balloon()];
+    this.balloons = [];
     this.balloon = new Balloon();
   }
 
@@ -19,6 +19,7 @@ class Canvas {
     return balloon;
   }
 
+  
   animate(ctx = this.ctx){
     ctx.clearRect(0, 0, this.element.width, this.element.height);
     requestAnimationFrame(() => this.animate());
