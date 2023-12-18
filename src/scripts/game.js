@@ -6,14 +6,16 @@ class Game {
     this.score = 0;
     this.life = 3;
     this.canvas = new Canvas (1000, 600);
+    this.missed = 0;
+    this.popCounter = 0;
+    this.balloonCount = 5;
+    this.attempts = this.popCounter + this.missed;
     addEventListener("keydown", (event) => this.pop(event));
-    
   }
   
   start() {
     this.canvas.balloons.push(new Balloon(), new Balloon(), new Balloon(), new Balloon(), new Balloon());
     this.animate();
-    
   }
 
   animate(ctx = this.canvas.ctx){
@@ -22,9 +24,11 @@ class Game {
     requestAnimationFrame(() => this.animate());
     this.canvas.balloons.forEach((balloon, index) => {
       if (balloon.y <= balloon.radius) {
+        this.missed++;
+        console.log(`current life: ${this.life}`);
         this.loseLife();
         this.canvas.balloons.splice(index, 1);
-        console.log(`current life: ${this.life}`);
+        
       }
       
       if (balloon.y > balloon.radius) { 
@@ -58,6 +62,14 @@ class Game {
     if (this.life === 0) {
       // emptys the array of balloons when game lives equal to 0
       this.canvas.balloons = [];
+      console.log(`Total Balloons: ${this.balloonCount}`);
+      console.log(`Balloons Popped: ${this.popCounter}`);
+      console.log(`Missed balloons: ${this.missed}`);
+      this.attempts = this.popCounter + this.missed;
+      let percentage = Math.floor(this.popCounter/this.attempts * 100);
+
+      console.log(`Total Attempts: ${this.attempts}`);
+      console.log(`Accuracy: ${percentage}%`);
     }
 
     
@@ -78,14 +90,17 @@ class Game {
           this.score++;
           console.log(`score: ${this.score}`);
           this.canvas.addBalloon();
+          this.balloonCount++;
           correctKeyPress = true;
           // Break after the first matching balloon is removed
+          this.popCounter++;
           break; 
         } 
       }
 
       if (!correctKeyPress) {
         this.score--;
+        this.missed++;
         console.log(`score: ${this.score}`);
       }
     }
@@ -93,7 +108,7 @@ class Game {
 
   increaseBalloonSpeed(){
     if (this.score > 0 && this.score % 10 === 0) {
-      Balloon.dy *= 1.003;
+      Balloon.dy *= 1.0025;
     }
   }
 
