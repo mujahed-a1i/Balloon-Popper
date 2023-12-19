@@ -21,11 +21,11 @@ class Balloon {
     this.image = new Image();
     this.image.src = this.images[Math.floor(Math.random() * this.images.length)];
     this.image.onload = this.draw.bind(this);
-    this.width = this.image.width;
+    this.width = parseInt(this.image.width, 10);
+    this.image.width;
     this.height = this.image.height;
-    this.directions = [this.floatLeft, this.floatRight, this.floatUp];
     this.radius = this.image.width / 2;
-    this.x = Math.floor(this.width + Math.random()*(1000 - this.width + 1));
+    this.x = Math.floor(this.radius + Math.random()*(1000 - this.width + 1));
     this.y = 627;
     this.dx = 1;
     this.dy = .6;
@@ -35,6 +35,7 @@ class Balloon {
     this.letter = this.randomLetter();
     this.moveCounter = 0;
     this.moveLimit = Math.floor(Math.random() * (140 - 40 + 1) + 40);
+    this.directions = [this.floatLeft, this.floatRight, this.floatUp];
     this.direction = [this.floatLeft, this.floatRight, this.floatUp][Math.floor(Math.random()* 3)];
   }
 
@@ -91,7 +92,7 @@ class Balloon {
   
   // }
   validPos() { // checks to see if Balloon is within the canvas
-    if ((this.x > this.width && this.x < 1000 - this.width) && (this.y > 0)) {
+    if ((this.x > this.radius && (this.x < 1000 - this.width)) && (this.y > 0)) {
       return true;
     } 
     return false;

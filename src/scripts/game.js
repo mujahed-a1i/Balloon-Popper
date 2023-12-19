@@ -2,12 +2,14 @@ import Balloon from "./balloon";
 import Canvas from "./canvas";
 class Game {
   constructor() {
-    Game.score = 10;
     this.score = 0;
+    this.gameScore = document.getElementById('score');
     this.life = 3;
+    this.gameLife = document.getElementById('lives')
     this.canvas = new Canvas (1000, 600);
     this.missed = 0;
     this.popCounter = 0;
+    this.gamePopCounter = document.getElementById('popCounter');
     this.balloonCount = 5;
     this.attempts = this.popCounter + this.missed;
     addEventListener("keydown", (event) => this.pop(event));
@@ -23,12 +25,19 @@ class Game {
     this.canvas.ctx.clearRect(0, 0, 1000, 600);
     requestAnimationFrame(() => this.animate());
     this.canvas.balloons.forEach((balloon, index) => {
+      // if (balloon.x > 960) {
+      //   console.log(balloon.x);
+      // }
+      
       if (balloon.y <= 0) {
         this.missed++;
-        this.canvas.addBalloon()
-        console.log(`current life: ${this.life}`);
         this.loseLife();
+        console.log(`current life: ${this.life}`);
         this.canvas.balloons.splice(index, 1);
+
+        if (this.life > 0) {
+          this.canvas.addBalloon();
+        }
         
       }
       
@@ -44,6 +53,10 @@ class Game {
 
   loseLife() { 
     this.life--;
+    if (this.life >= 0) {
+      this.gameLife.textContent = `Lives: ${this.life}`;
+    }
+
 
     if (this.life === 0) {
       // emptys the array of balloons when game lives equal to 0
@@ -74,18 +87,21 @@ class Game {
           // Once 1 balloon is removed, another one is being added.
           this.canvas.balloons.splice(i, 1);
           this.score++;
+          this.gameScore.textContent = `Score: ${this.score}`;
           console.log(`score: ${this.score}`);
           this.canvas.addBalloon();
           this.balloonCount++;
           correctKeyPress = true;
           // Break after the first matching balloon is removed
           this.popCounter++;
+          this.gamePopCounter.textContent = `Balloons Popped: ${this.popCounter}`;
           break; 
         } 
       }
 
       if (!correctKeyPress) {
         this.score--;
+        this.gameScore.textContent = `Score: ${this.score}`;
         this.missed++;
         console.log(`score: ${this.score}`);
       }
