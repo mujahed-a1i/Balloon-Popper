@@ -1,6 +1,6 @@
 # Balloon Popper  
   
-The game is set within a window, featuring balloons ascending from the bottom. Every balloon displays a randomly assigned letter. To pop a balloon, you must accurately type the corresponding letter on your keyboard. However, if you mistype, not only do you lose points, but the balloon also persists. You start the game with three lives. Losing a life occurs when a balloon reaches the top of the window. As you successfully pop more balloons, the game intensifies with increased balloon speed and a higher volume of balloons appearing in the window.
+The game is set within a window, featuring balloons ascending from the bottom. Every balloon displays a randomly assigned letter. To pop a balloon, you must accurately type the corresponding letter on your keyboard. However, if you mistype, not only do you lose points, but the balloon also persists. You start the game with three lives. Losing a life occurs when a balloon reaches the top of the window. As you successfully pop more balloons, the game intensifies with increased balloon speed.
 
 [Play Game.](https://mujahed-a1i.github.io/Balloon-Popper)
 

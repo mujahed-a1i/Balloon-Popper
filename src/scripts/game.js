@@ -183,7 +183,7 @@ class Game {
           break; 
         } 
       }
-
+      
       if (!correctKeyPress) {
         this.score--;
         this.gameScore.textContent = `Score: ${this.score}`;
