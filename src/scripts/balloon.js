@@ -41,16 +41,7 @@ class Balloon {
 
 
   draw() { // Draws the balloon with corresponding Letter
-
-    // Draws the balloon
-    // ctx.fillStyle = this.color;
-    // ctx.beginPath();
-    // ctx.arc(this.x, this.y, this.radius, 0, this.endAngle, true);
-    // ctx.fill();; 
-    // ctx.stroke();
-    // ctx.closePath();
     this.ctx.drawImage(this.image,this.x, this.y, this.image.width, this.image.height);
-
     // Draws the corresponding letter within the balloon
     this.ctx.fillStyle = 'white'; // Set the color for the text
     this.ctx.font = '25px Arial'; // Set the font style
