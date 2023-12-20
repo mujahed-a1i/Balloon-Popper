@@ -52,6 +52,14 @@ class Game {
       this.end();
     });
   }
+
+  pause(){
+    this.paused = true;
+
+    this.pausedBalloons = [...this.canvas.balloons];
+    this.canvas.balloons = [];
+  }
+
   
   start() {
     this.canvas.balloons.push(new Balloon(), new Balloon(), new Balloon(), new Balloon(), new Balloon());
@@ -72,7 +80,7 @@ class Game {
     this.gameScore.textContent = `Score: ${this.score}`;
     this.gameLife.textContent = `Lives: ${this.life}`;
     this.gamePopCounter.textContent = `Balloons Popped: ${this.popCounter}`;
-    this.pause = false;
+    // this.paused = false;
     this.start();
     // this.animate();
   }
@@ -97,10 +105,9 @@ class Game {
       accuracy.textContent = `Accuracy: ${percentage}%`;
       this.endGameModal.showModal();
       this.newGame.addEventListener("click", () => {
-        this.pause();
+        // this.pause();
         this.endGameModal.close();
         this.reset();
-        this.resume()
       }); 
     }
     
@@ -124,13 +131,7 @@ class Game {
     this.pausedBalloons = [];
     this.animate();
   }
-  pause(){
-    this.paused = true;
-
-    this.pausedBalloons = [...this.canvas.balloons];
-    this.canvas.balloons = [];
-  }
-
+ 
   animate(){
     if (!this.paused) {
       this.increaseBalloonSpeed();
