@@ -42,14 +42,10 @@ class Game {
 
     this.newGame = document.getElementById('newGame');
     this.restart.addEventListener('click', () => {
-      // this.pause();
-      this.canvas.balloons = [];
-      // let game1 = new Game ();
-      // game1,this.canvas.balloons.push(new Balloon(), new Balloon(), new Balloon(), new Balloon(), new Balloon());
-      // game1.start();
+      // this.canvas.balloons = [];
       // this.reset();
-      this.reset();
-      this.end();
+      // this.end();
+      window.location.reload();
     });
   }
 
@@ -106,8 +102,9 @@ class Game {
       this.endGameModal.showModal();
       this.newGame.addEventListener("click", () => {
         // this.pause();
-        this.endGameModal.close();
-        this.reset();
+        // this.endGameModal.close();
+        // this.reset();
+        window.location.reload();
       }); 
     }
     
