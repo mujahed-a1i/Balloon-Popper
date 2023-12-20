@@ -4,6 +4,11 @@ The game is set within a window, featuring balloons ascending from the bottom. E
 
 [Play Game.](https://mujahed-a1i.github.io/Balloon-Popper)
 
+## Gameplay
+The game website will open with an instruction modal. To start the game will need to click the Start button on the instruction modal. At the end of the game, a game stats modal will appear. If you would like to play again, you can click on the New Game button. To restart the game, you click on the restart button. If you need to read the instructions again, you can click on the help button. After clicking on the help button the game will pause. The game will resume once you close the instructions modal.
+ 
+![Gameplay](assets/gameplay/gameplay.gif)
+
 ## Implementation
 **Balloon Movement**  
 A Balloon class will draw an image of a balloon within the canvas window. The balloon color will randomly selected from an array of balloon images. Within the balloon class, there will be movement functions that will allow the balloon to float up, right and left. Each balloon directions will be random and have a random movement limit. Once the movement limit is reached, the balloon will randomly generate another direction. If the balloon hits the side of the screen, it will bounce back to the other direction. If the the balloon reaches to the top, it will pop. 
@@ -76,17 +81,8 @@ After every 10th point, the difficulty will increase. The speed of the balloons 
     }
   }
 ```
-
-## Gameplay
-The game website will open with an instruction modal. To start the game will need to click the Start button on the instruction modal. At the end of the game, a game stats modal will appear. If you would like to play again, you can click on the New Game button. To restart the game, you click on the restart button. If you need to read the instructions again, you can click on the help button. After clicking on the help button the game will pause. The game will resume once you close the instructions modal.
- 
-![Gameplay](assets/gameplay/gameplay.gif)
-
-
 <!-- ## Wireframe  
 ![Wireframe](assets/readme/wireframe.png) -->
-
-
 
 ## Future Implementaion
 - Add a moving cloud. The moving cloud will have collision detection with balloons in which you will not be able to pop the balloons.
