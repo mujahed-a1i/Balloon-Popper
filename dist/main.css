@@ -138,15 +138,15 @@ table {
 
 @font-face {
   font-family: myFont;
-  src: url(/assets/fonts/CarnivaleeFreakshow-DLrm.ttf);
+  src: url(../assets/fonts/CarnivaleeFreakshow-DLrm.ttf);
 }
 @font-face {
   font-family: myFont2;
-  src: url(/assets/fonts/LostInSmileDemo-eZD0m.ttf);
+  src: url(../assets/fonts/LostInSmileDemo-eZD0m.ttf);
 }
 @font-face {
   font-family: myFont3;
-  src: url(/assets/fonts/PixelifySans-VariableFont_wght.ttf);
+  src: url(../assets/fonts/MouldyCheeseRegular-WyMWG.ttf);
 }
 body {
   background: url("../assets/blueStripe.png");
@@ -188,7 +188,6 @@ body {
 
 #titleContainer {
   padding: 5px;
-  display: flex;
   justify-content: center;
 }
 
@@ -201,8 +200,6 @@ body {
   height: 50px;
   padding: 5px;
   position: fixed;
-  top: 30%;
-  left: 4%;
 }
 
 #instructionModal {
@@ -223,6 +220,7 @@ body {
   font-family: myfont3;
   text-decoration: underline;
   font-size: 50px;
+  font-weight: 1px;
   color: rgba(0, 8, 255, 0.868);
 }
 
@@ -232,8 +230,8 @@ body {
 }
 
 #openModal {
-  margin-left: 5%;
-  margin-top: 5%;
+  height: 50px;
+  width: 100px;
   display: inline-block;
   outline: none;
   cursor: pointer;
@@ -280,8 +278,8 @@ body {
 #restart {
   display: inline-block;
   outline: none;
-  margin-left: 78%;
-  margin-top: 5%;
+  height: 50px;
+  width: 100px;
   display: inline-block;
   outline: none;
   cursor: pointer;
@@ -337,4 +335,16 @@ body {
   transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
   background: #e63030;
   color: #ffffff;
+}
+
+#scoreboardContainer {
+  font-family: myfont3;
+}
+
+#scoreboardWrapper {
+  margin-left: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 400px;
 }

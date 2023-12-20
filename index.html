@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <link rel="stylesheet" href="./dist/main.css" />
-  <link rel="icon" type="image/x-icon" href="/assets/icons8-balloon-60.png">
+  <link rel="icon" type="image/x-icon" href="../assets/icons8-balloon-60.png">
   <script src="./dist/main.js"></script>
   <title>Balloon Popper</title>
 </head>
@@ -17,18 +17,25 @@
       <h1 id='titleFont'>Balloon Popper</h1>
   </div>
 
-  <div id = "scoreboardContainer">
-    <p class ="score">Score: 0</p>
-    <p class = 'popCounter'>Balloons Popped: 0</p>
+  <div id = "scoreboardWrapper">
+
+  <button id="openModal">Help</button>
+  <div id="scoreboardContainer">
+    <p class="score">Score: 0</p>
+    <p class='popCounter'>Balloons Popped: 0</p>
     <p id='lives'>Lives: 3</p>
   </div>
+  <button id="restart">Restart</butoon>
+
+  </div>
+
 
   <canvas id="gameScreen"></canvas>
   <dialog id="instructionModal">
     <h2>Instructions</h2> <br>
     <p id =>
       The game is set within a window, featuring balloons ascending from the bottom. Every balloon displays a randomly
-      assigned letter. To burst a balloon, you must accurately type the corresponding letter on your keyboard. However, if you
+      assigned letter. To pop a balloon, you must accurately type the corresponding letter on your keyboard. However, if you
       mistype, not only do you lose points, but the balloon also persists. You start the game with three lives. Losing a life
       occurs when a balloon reaches the top of the window. As you successfully pop more balloons, the game intensifies with
       increased balloon speed
@@ -51,9 +58,12 @@
   </dialog>
   
 
-  <button id="openModal">Help</button>
-  <button id="restart">Restart</butoon>
+  <!-- <button id="openModal">Help</button> -->
+
+
+  
 </div>
+  <!-- <button id="'mute">Mute</button> -->
 </body>
 
 </html>
