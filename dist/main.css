@@ -140,8 +140,16 @@ table {
   font-family: myFont;
   src: url(/assets/fonts/CarnivaleeFreakshow-DLrm.ttf);
 }
+@font-face {
+  font-family: myFont2;
+  src: url(/assets/fonts/LostInSmileDemo-eZD0m.ttf);
+}
+@font-face {
+  font-family: myFont3;
+  src: url(/assets/fonts/StayPixelRegular-EaOxl.ttf);
+}
 body {
-  background: url("../assets/blueStripe.jpg");
+  background: url("../assets/blueStripe.png");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -160,30 +168,129 @@ body {
   left: 0px;
   bottom: 0px;
   right: 0px;
+  background: url("../assets/sky.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 #titleFont {
   text-align: center;
   font-family: myFont;
   color: red;
-  border: 5px solid blue;
-  padding: 5px;
-  font-size: 60px;
-  background-color: white;
-  width: 350px;
-  position: absolute;
-  top: 10px;
+  border-radius: 10px;
+  font-size: 80px;
+  bottom: 100%;
+  -webkit-text-stroke-width: 0.9px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
 }
 
-#title {
+#titleContainer {
+  padding: 5px;
   display: flex;
   justify-content: center;
 }
 
-#scoreboard {
-  border: 5px solid blue;
-  background-color: white;
+#scoreboardContainer {
+  border: 5px solid rgb(242, 18, 18);
+  border-radius: 10px;
+  background-color: rgb(16, 0, 240);
+  color: white;
   width: 150px;
   height: 50px;
-  padding: 10px;
+  padding: 5px;
+  position: fixed;
+  top: 30%;
+  left: 4%;
+}
+
+#instructionModal {
+  font-size: 20px;
+  height: 200px;
+  width: 600px;
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: #f70000;
+  background-color: rgb(180, 178, 178);
+}
+
+#instructionModal::backdrop {
+  background-color: rgba(134, 134, 134, 0.5);
+}
+
+#instructionModal > h2 {
+  font-family: myfont2;
+  text-decoration: underline;
+  font-size: 50px;
+  color: rgba(0, 8, 255, 0.868);
+}
+
+#instructionModal > p {
+  color: rgba(0, 8, 255, 0.868);
+}
+
+#openModal {
+  margin-left: 5%;
+  margin-top: 5%;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 13px 23px;
+  border: 1px solid #ffffff;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background: #e63030;
+  color: #ffffff;
+}
+
+#openModal:hover {
+  border-color: #ff0000;
+  background: #ffffff;
+  color: #e63030;
+}
+
+#closeModal {
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 13px 23px;
+  border: 1px solid #ffffff;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background: #e63030;
+  color: #ffffff;
+}
+
+#closeModal:hover {
+  border-color: #ff0000;
+  background: #ffffff;
+  color: #e63030;
+}
+
+#closeModal::backdrop {
+  background-color: rgba(134, 134, 134, 0.5);
+}
+
+#restart {
+  display: inline-block;
+  outline: none;
+  margin-left: 78%;
+  margin-top: 5%;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 13px 23px;
+  border: 1px solid #ffffff;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background: #e63030;
+  color: #ffffff;
 }

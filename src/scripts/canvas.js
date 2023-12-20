@@ -10,6 +10,8 @@ class Canvas {
     this.element.height = height;
     this.balloons = [];
     this.balloon = new Balloon();
+    this.image = new Image();
+    this.image.src = "./assets/sky.jpg";
   }
 
   addBalloon() {

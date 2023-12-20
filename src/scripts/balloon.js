@@ -16,13 +16,12 @@ class Balloon {
       "./assets/balloons/babyBlue.png",
       "./assets/balloons/darkGreen.png",
       "./assets/balloons/darkRed.png",
-      "./assets/balloons/babyPink.png"
-    ];
+      "./assets/balloons/babyPink.png" ];
+
     this.image = new Image();
     this.image.src = this.images[Math.floor(Math.random() * this.images.length)];
     this.image.onload = this.draw.bind(this);
-    this.width = parseInt(this.image.width, 10);
-    this.image.width;
+    this.width = this.image.width;
     this.height = this.image.height;
     this.radius = this.image.width / 2;
     this.x = Math.floor(this.radius + Math.random()*(1000 - this.width + 1));
@@ -50,7 +49,7 @@ class Balloon {
     // ctx.fill();; 
     // ctx.stroke();
     // ctx.closePath();
-    this.ctx.drawImage(this.image,this.x, this.y);
+    this.ctx.drawImage(this.image,this.x, this.y, this.image.width, this.image.height);
 
     // Draws the corresponding letter within the balloon
     this.ctx.fillStyle = 'white'; // Set the color for the text
@@ -92,7 +91,7 @@ class Balloon {
   
   // }
   validPos() { // checks to see if Balloon is within the canvas
-    if ((this.x > this.radius && (this.x < 1000 - this.width)) && (this.y > 0)) {
+    if ((this.x > this.radius && (this.x < 1000 - (this.image.width/ 2))) && (this.y > 0)) {
       return true;
     } 
     return false;
@@ -123,13 +122,16 @@ class Balloon {
   directionExcluder() {
     // this method helps to exclude the direction in which the balloon
     // was cause to leave the direction
+    this.moveLimit += 300;
     let array = [];
     this.directions.forEach((direction) => {
-      if (direction !== this.direction) {
+      if (direction !== this.direction && direction != this.floatUp) {
         array.push(direction);
       }
     });
-    return array[Math.floor(Math.random() * 2)];
+
+    return array[0];
+    // return array[Math.floor(Math.random() * 1)];
   }
 }
 
