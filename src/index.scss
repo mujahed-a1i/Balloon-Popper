@@ -99,7 +99,7 @@ body {
 #instructionModal::backdrop {
   background-color: rgba(134, 134, 134, 0.5);
 }
-#instructionModal > h2 {
+#instructionHeader {
   font-family: myfont3;
   text-decoration: underline;
   font-size: 50px;
@@ -244,7 +244,13 @@ body {
   height: 400px;
 }
 
-
+#instructionHeader {
+  text-align: justify;
+}
+#instructionBar > img {
+  vertical-align: middle;
+  display: inline-block;
+}
 
 
 

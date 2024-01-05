@@ -15,11 +15,12 @@ class Game {
     this.pausedBalloons = [];
     this.paused = false;
     this.openModal = document.getElementById('openModal');
+
     this.closeModal = document.getElementById('closeModal');
     this.modal = document.getElementById('instructionModal');
     this.restart = document.getElementById('restart');
    
-    addEventListener("keydown", (event) => this.pop(event));
+    // addEventListener("keydown", (event) => this.pop(event));
     const disableEscapeKey = (event) => {
       if (event.key === 'Escape' || event.key === 'Esc') {
         event.preventDefault();
@@ -27,6 +28,7 @@ class Game {
     };
     addEventListener('keydown', disableEscapeKey);
     this.openModal.addEventListener('click', () => {
+      // this.openModal.scrollTop = 0;
       this.pause();
       this.modal.showModal();
     });
@@ -34,6 +36,7 @@ class Game {
       document.removeEventListener('keydown', disableEscapeKey);
       this.modal.close();
       this.resume();
+      this.keyStroke();
     });
 
     this.modal.addEventListener('cancel', (event) => {
@@ -56,6 +59,14 @@ class Game {
     this.canvas.balloons = [];
   }
 
+  keyStroke() {
+    addEventListener("keydown", (event) => this.pop(event));
+    const disableEscapeKey = (event) => {
+      if (event.key === 'Escape' || event.key === 'Esc') {
+        event.preventDefault();
+      }
+    };
+  }
   
   start() {
     this.canvas.balloons.push(new Balloon(), new Balloon(), new Balloon(), new Balloon(), new Balloon());
@@ -99,6 +110,7 @@ class Game {
       missedBalloons.textContent = `Missed balloons: ${this.missed}`;
       attempts.textContent = `Total Attempts: ${this.attempts}`;
       accuracy.textContent = `Accuracy: ${percentage}%`;
+      document.removeEventListener('keydown', this.popFunction);
       this.endGameModal.showModal();
       this.newGame.addEventListener("click", () => {
         // this.pause();
@@ -162,32 +174,34 @@ class Game {
   }
 
   pop(event) {
-    if (event.keyCode > 64 && event.keyCode < 91) {
-      // checking to see if the keypress is only alphabetical chars
-      let correctKeyPress = false;
-      for (let i = 0; i < this.canvas.balloons.length; i++) {
-        let balloon = this.canvas.balloons[i];
-        if (event.key.toUpperCase() === balloon.letter) {
-          // if the keypress matches the balloon's letter
-          // the balloon will be removed from the array
-          // Once 1 balloon is removed, another one is being added.
-          this.canvas.balloons.splice(i, 1);
-          this.score++;
+    if (this.life > 0) {
+      if (event.keyCode > 64 && event.keyCode < 91) {
+        // checking to see if the keypress is only alphabetical chars
+        let correctKeyPress = false;
+        for (let i = 0; i < this.canvas.balloons.length; i++) {
+          let balloon = this.canvas.balloons[i];
+          if (event.key.toUpperCase() === balloon.letter) {
+            // if the keypress matches the balloon's letter
+            // the balloon will be removed from the array
+            // Once 1 balloon is removed, another one is being added.
+            this.canvas.balloons.splice(i, 1);
+            this.score++;
+            this.gameScore.textContent = `Score: ${this.score}`;
+            this.canvas.addBalloon();
+            this.balloonCount++;
+            correctKeyPress = true;
+            // Break after the first matching balloon is removed
+            this.popCounter++;
+            this.gamePopCounter.textContent = `Balloons Popped: ${this.popCounter}`;
+            break; 
+          } 
+        }
+        
+        if (!correctKeyPress) {
+          this.score--;
           this.gameScore.textContent = `Score: ${this.score}`;
-          this.canvas.addBalloon();
-          this.balloonCount++;
-          correctKeyPress = true;
-          // Break after the first matching balloon is removed
-          this.popCounter++;
-          this.gamePopCounter.textContent = `Balloons Popped: ${this.popCounter}`;
-          break; 
-        } 
-      }
-      
-      if (!correctKeyPress) {
-        this.score--;
-        this.gameScore.textContent = `Score: ${this.score}`;
-        this.missed++;
+          this.missed++;
+        }
       }
     }
   }
