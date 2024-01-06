@@ -22,6 +22,7 @@ class Balloon {
     this.image.src = this.images[Math.floor(Math.random() * this.images.length)];
     this.image.onload = this.draw.bind(this);
     this.width = this.image.width;
+    
     this.height = this.image.height;
     this.radius = this.image.width / 2;
     this.x = Math.floor(this.radius + Math.random()*(1000 - this.width + 1));

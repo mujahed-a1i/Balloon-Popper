@@ -176,11 +176,14 @@ class Game {
   pop(event) {
     if (this.life > 0) {
       if (event.keyCode > 64 && event.keyCode < 91) {
+        
         // checking to see if the keypress is only alphabetical chars
         let correctKeyPress = false;
         for (let i = 0; i < this.canvas.balloons.length; i++) {
           let balloon = this.canvas.balloons[i];
           if (event.key.toUpperCase() === balloon.letter) {
+            // console.log('pop')
+            // console.log(this.canvas.balloons[4].width);
             // if the keypress matches the balloon's letter
             // the balloon will be removed from the array
             // Once 1 balloon is removed, another one is being added.
