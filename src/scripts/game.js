@@ -88,6 +88,7 @@ class Game {
     this.gameLife.textContent = `Lives: ${this.life}`;
     this.gamePopCounter.textContent = `Balloons Popped: ${this.popCounter}`;
     // this.paused = false;
+    document.removeEventListener('keydown', (event) => this.pop(event))
     this.start();
     // this.animate();
   }
@@ -110,7 +111,7 @@ class Game {
       missedBalloons.textContent = `Missed balloons: ${this.missed}`;
       attempts.textContent = `Total Attempts: ${this.attempts}`;
       accuracy.textContent = `Accuracy: ${percentage}%`;
-      document.removeEventListener('keydown', this.popFunction);
+      document.removeEventListener('keydown', (event) => this.pop(event))
       this.endGameModal.showModal();
       this.newGame.addEventListener("click", () => {
         // this.pause();

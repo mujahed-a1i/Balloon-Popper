@@ -25,7 +25,7 @@ class Balloon {
     
     this.height = this.image.height;
     this.radius = this.image.width / 2;
-    this.x = Math.floor(this.radius + Math.random()*(1000 - this.width + 1));
+    this.x = Math.floor(this.radius + Math.random()*(940 + 1));
     this.y = 627;
     this.dx = 1;
     this.dy = .6;
@@ -83,7 +83,7 @@ class Balloon {
   
   // }
   validPos() { // checks to see if Balloon is within the canvas
-    if ((this.x > this.radius && (this.x < 1000 - (this.image.width/ 2))) && (this.y > 0)) {
+    if ((this.x > this.radius && (this.x < (1000 - 26))) && (this.y > 0)) {
       return true;
     } 
     return false;
