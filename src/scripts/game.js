@@ -19,7 +19,6 @@ class Game {
     this.closeModal = document.getElementById('closeModal');
     this.modal = document.getElementById('instructionModal');
     this.restart = document.getElementById('restart');
-   
     // addEventListener("keydown", (event) => this.pop(event));
     const disableEscapeKey = (event) => {
       if (event.key === 'Escape' || event.key === 'Esc') {
@@ -88,13 +87,14 @@ class Game {
     this.gameLife.textContent = `Lives: ${this.life}`;
     this.gamePopCounter.textContent = `Balloons Popped: ${this.popCounter}`;
     // this.paused = false;
-    document.removeEventListener('keydown', (event) => this.pop(event))
+    document.removeEventListener('keydown', this.pop);
     this.start();
     // this.animate();
   }
 
   end() {
     if (this.life === 0){
+      document.removeEventListener('keydown', this.pop);
       this.canvas.balloons = [];
       this.endGameModal = document.getElementById('endStats');
       // this.endGameModal.showModal();
@@ -111,7 +111,7 @@ class Game {
       missedBalloons.textContent = `Missed balloons: ${this.missed}`;
       attempts.textContent = `Total Attempts: ${this.attempts}`;
       accuracy.textContent = `Accuracy: ${percentage}%`;
-      document.removeEventListener('keydown', (event) => this.pop(event))
+      
       this.endGameModal.showModal();
       this.newGame.addEventListener("click", () => {
         // this.pause();
@@ -207,6 +207,9 @@ class Game {
           this.missed++;
         }
       }
+    } else {
+      // Remove keydown event listener when this.life is 0
+      document.removeEventListener('keydown', this.pop);
     }
   }
 
