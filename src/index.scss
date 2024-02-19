@@ -70,7 +70,7 @@ body {
   border-radius: 10px;
   background-color: rgb(16, 0, 240);
   color: white;
-  width: 150px;
+  min-width: 165px;
   height: 50px;
   padding: 5px;
   position: fixed;
@@ -83,7 +83,7 @@ body {
   border-radius: 10px;
   border-width: 5px;
   border-color: #f70000;
-  background-color: rgb(180, 178, 178);
+  background-color: rgb(105, 190, 255);
   position: absolute;
   // top: 50%;
   // left: 50%;
@@ -186,11 +186,13 @@ body {
   border-width: 5px;
   border-color: #f70000;
   background-color: rgb(105, 190, 255);
+  color: rgba(0, 8, 255, 0.868);
   position: absolute;
 }
 
 #endStats > h2 {
   text-decoration: underline;
+  // text-decoration-color: white;
   font-family: myfont3;
   font-size: 30px;
 }
